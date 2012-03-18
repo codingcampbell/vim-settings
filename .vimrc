@@ -67,3 +67,8 @@ nore ; :
 
 " Show command being typed
 set showcmd
+
+" Hack to get 256 colors to display in tmux
+if !has("gui_running")
+    set term=screen-256color
+endif
