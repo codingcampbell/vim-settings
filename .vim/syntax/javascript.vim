@@ -229,7 +229,7 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   HiLink javaScriptPrototype            Type
   HiLink javaScriptConditional          Conditional
   HiLink javaScriptBranch               Conditional
-  HiLink javaScriptIdentifier           Identifier
+  HiLink javaScriptIdentifier           Type
   HiLink javaScriptRepeat               Repeat
   HiLink javaScriptStatement            Statement
   HiLink javaScriptFunction             Function
@@ -274,7 +274,6 @@ if version >= 508 || !exists("did_javascript_syn_inits")
 	HiLink javaScriptAjaxMethods        Exception
 	HiLink javaScriptAjaxProperties     Type
 
-	HiLink javaScriptFuncName           Title
 
 	HiLink javaScriptHtmlEvents         Special
 	HiLink javaScriptHtmlElemProperties   Type
