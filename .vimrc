@@ -9,9 +9,14 @@ au BufNewFile,BufRead *.templ set filetype=php
 au BufNewFile,BufRead *.jsv set filetype=php
 au BufNewFile,BufRead *.coffee set filetype=javascript
 au BufNewFile,BufRead *.json set filetype=javascript
+au BufNewFile,BufRead *.m set filetype=objc
 
+set nocompatible
 syntax on
 filetype on
+
+" Fix backspace/delete key on OSX
+set backspace=2
 
 " Case-insensitive search
 set ic
@@ -22,6 +27,8 @@ set number
 " Alert when a file has been externally modified
 au CursorHold,CursorHoldI * checktime
 
+" Fix tmux delay
+set timeoutlen=100
 set noswapfile
 set nobackup
 
@@ -53,6 +60,7 @@ noremap L $
 
 set t_Co=256
 colorscheme molokai
+highlight clear SignColumn
 
 " Tab completion for vim commands
 set wildmenu
@@ -72,3 +80,14 @@ set showcmd
 if !has("gui_running")
     set term=screen-256color
 endif
+
+" Alternate absolute/relative line numbers
+function! NumberToggle()
+	if(&relativenumber == 1)
+		set number
+	else
+		set relativenumber
+	endif
+endfunc
+
+nnoremap <C-n> :call NumberToggle()<cr>
