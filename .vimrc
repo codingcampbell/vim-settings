@@ -1,4 +1,6 @@
 filetype off
+let g:localvimrc_ask=0
+
 call pathogen#runtime_append_all_bundles()
 
 au BufNewFile,BufRead *.hx set filetype=haxe
