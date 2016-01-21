@@ -25,9 +25,6 @@ augroup configgroup
   " PEP-8 whitespace rules for Python
   au BufNewFile,BufRead *.py setlocal tabstop=8 expandtab shiftwidth=4 softtabstop=4
 
-  " Whitespace rules for CoffeeScript
-  au BufNewFile,BufRead *.coffee setlocal tabstop=8 expandtab shiftwidth=2 softtabstop=2
-
   " Whitespace rules for Rust
   au BufNewFile,BufRead *.rs setlocal filetype=rust tabstop=8 expandtab shiftwidth=4 softtabstop=4
 augroup END
