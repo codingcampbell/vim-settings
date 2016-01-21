@@ -78,7 +78,7 @@ noremap H ^
 noremap L $
 
 set t_Co=256
-colorscheme molokai
+
 highlight clear SignColumn
 
 " Tab completion for vim commands
@@ -116,7 +116,7 @@ function FormatJSON()
 endfunction
 nnoremap <Leader>j :call FormatJSON()<CR>
 
-" Hack to get 256 colors to display in tmux
 if !has("gui_running")
-    set term=screen-256color
+  set background=dark
+  colorscheme onedark
 endif
