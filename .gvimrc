@@ -1,12 +1,12 @@
-set guifont=consolas\ 16
+set background=dark
+colorscheme onedark
+set guifont=Ubuntu\ Mono:h15
+set linespace=1
 set guioptions-=T
 set guioptions-=m
+set guioptions-=L
+set guioptions-=r
 set guiheadroom=0
-set columns=96
-set lines=32
-
-" Add Ctrl+S shortcut for :w
-nnoremap  <ESC>:w<CR>
-
-" Add Ctrl+A shortcut for "select-all"
-nnoremap  <ESC>ggVG
+set columns=128
+set lines=48
+set fuoptions+=maxhorz

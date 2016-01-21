@@ -1,36 +1,59 @@
 filetype off
 let g:localvimrc_ask=0
 
-call pathogen#runtime_append_all_bundles()
+" Explicitly use bash so other parent shells (fish) don't break
+set shell=/bin/bash
 
-au BufNewFile,BufRead *.hx set filetype=haxe
-au BufNewFile,BufRead *.tile set filetype=php
-au BufNewFile,BufRead *.phtml set filetype=php
-au BufNewFile,BufRead *.mod set filetype=php
-au BufNewFile,BufRead *.templ set filetype=php
-au BufNewFile,BufRead *.jsv set filetype=php
-au BufNewFile,BufRead *.json set filetype=javascript
-au BufNewFile,BufRead *.m set filetype=objc
-au BufNewFile,BufRead *.md set filetype=markdown
-au BufNewFile,BufRead *.rs set filetype=rust
+execute pathogen#infect()
 
-" PEP-8 whitespace rules for Python
-au BufNewFile,BufRead *.py setlocal tabstop=8 expandtab shiftwidth=4 softtabstop=4
+augroup configgroup
+  " Clear current autocmds
+  au!
 
-" Whitespace rules for CoffeeScript
-au BufNewFile,BufRead *.coffee setlocal tabstop=8 expandtab shiftwidth=2 softtabstop=2
+  " Custom file extensions
+  au BufNewFile,BufRead *.hbs set filetype=html
+  au BufNewFile,BufRead *.hx set filetype=haxe
+  au BufNewFile,BufRead *.json set filetype=javascript
+  au BufNewFile,BufRead *.m set filetype=objc
+  au BufNewFile,BufRead *.md set filetype=markdown
+  au BufNewFile,BufRead *.phtml set filetype=php
+  au BufNewFile,BufRead *.rs set filetype=rust
+
+  " Whitespace rules for Makefiles
+  au FileType make set noexpandtab
+
+  " PEP-8 whitespace rules for Python
+  au BufNewFile,BufRead *.py setlocal tabstop=8 expandtab shiftwidth=4 softtabstop=4
+
+  " Whitespace rules for CoffeeScript
+  au BufNewFile,BufRead *.coffee setlocal tabstop=8 expandtab shiftwidth=2 softtabstop=2
+
+  " Whitespace rules for Rust
+  au BufNewFile,BufRead *.rs setlocal filetype=rust tabstop=8 expandtab shiftwidth=4 softtabstop=4
+augroup END
 
 set nocompatible
 syntax on
 filetype on
 
+" Set fugitive diff to be vertical by default
+set diffopt+=vertical
+
+" Force vim-jsx to highlight even without @jsx pragma
+" https://github.com/kien/ctrlp.vim.gi://github.com/mxw/vim-jsx/issues/19
+let g:jsx_ext_required = 0
+let g:jsx_pragma_required = 0
+
 let g:ctrlp_user_command = {
-	\ 'types': {
-		\ 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
-		\ 2: ['.hg', 'hg --cwd %s locate -I .'],
-		\ },
-	\ 'fallback': 'find %s -type f'
+  \ 'types': {
+    \ 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
+    \ 2: ['.hg', 'hg --cwd %s locate -I .'],
+    \ },
+  \ 'fallback': 'find %s -type f'
 \ }
+
+" Long history for commands
+set history=5000
 
 " Fix backspace/delete key on OSX
 set backspace=2
@@ -62,6 +85,7 @@ set shiftwidth=2
 set autoindent
 set smartindent
 
+" No tabs :(
 set expandtab
 
 set cursorline
@@ -108,6 +132,14 @@ nnoremap <Leader>w :set list!<CR>
 " Show indent guide
 nnoremap <Leader>g :IndentGuidesToggle<CR>
 
+" Change background light/dark
+nnoremap <Leader>d :set background=dark<CR>
+nnoremap <Leader>l :set background=light<CR>
+
+" Copy/paste using system clipboard
+nnoremap <Leader>y "+y
+nnoremap <Leader>p "+p
+
 " Format JSON
 function FormatJSON()
   :%!python -m json.tool
@@ -116,7 +148,17 @@ function FormatJSON()
 endfunction
 nnoremap <Leader>j :call FormatJSON()<CR>
 
+" Use fugitive's git-grep in a quickfix window
+command -nargs=+ Grep execute 'silent Ggrep! -i' <q-args> | cw | redraw!
+map <Leader>f :Grep
+
+" SHUT UP (disable beeps)
+set noeb vb t_vb=
+
 if !has("gui_running")
   set background=dark
   colorscheme onedark
+
+  " Disable Background Color Erase to fix tmux background clearing
+  set t_ut=
 endif
