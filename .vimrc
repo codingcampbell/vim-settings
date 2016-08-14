@@ -149,6 +149,11 @@ nnoremap <Leader>j :call FormatJSON()<CR>
 command -nargs=+ Grep execute 'silent Ggrep! -i' <q-args> | cw | redraw!
 map <Leader>f :Grep
 
+" Omni-complete with tab
+set hidden
+let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
+let g:SuperTabDefaultCompletionType = "context"
+
 " SHUT UP (disable beeps)
 set noeb vb t_vb=
 
