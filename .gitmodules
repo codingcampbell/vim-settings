@@ -34,9 +34,6 @@
 [submodule ".vim/bundle/vim-multiple-cursors"]
 	path = .vim/bundle/vim-multiple-cursors
 	url = https://github.com/terryma/vim-multiple-cursors
-[submodule ".vim/bundle/onedark.vim"]
-	path = .vim/bundle/onedark.vim
-	url = https://github.com/codingcampbell/onedark.vim.git
 [submodule ".vim/bundle/rust.vim"]
 	path = .vim/bundle/rust.vim
 	url = https://github.com/rust-lang/rust.vim
@@ -46,3 +43,6 @@
 [submodule ".vim/bundle/vim-racer"]
 	path = .vim/bundle/vim-racer
 	url = https://github.com/racer-rust/vim-racer
+[submodule ".vim/bundle/vim-one"]
+	path = .vim/bundle/vim-one
+	url = https://github.com/rakr/vim-one
