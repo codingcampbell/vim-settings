@@ -33,6 +33,9 @@ set nocompatible
 syntax on
 filetype on
 
+" Disable CtrlP cache
+let g:ctrlp_cache_dir = '/dev/null'
+
 " Set fugitive diff to be vertical by default
 set diffopt+=vertical
 
@@ -62,6 +65,9 @@ set ic
 set number
 
 set colorcolumn=120
+
+" Always show tab line
+set showtabline=2
 
 " Alert when a file has been externally modified
 au CursorHold,CursorHoldI * checktime
@@ -119,12 +125,27 @@ set showcmd
 set notimeout
 let mapleader = ","
 
-" Toggle search highlight with F6
+" Alias Ctrl+c to Ctrl+[
+noremap  
+inoremap  
+
+" g-bracket to switch tabs
+noremap g[ gT
+noremap g] gt
+
+" g-brace to move tabs
+noremap g{ :tabm -1<CR>
+noremap g} :tabm +1<CR>
+
+" Toggle search highlight
 nnoremap <Leader>s :set hlsearch!<CR>
 
 " Show whitespace characters
 set listchars=eol:$,tab:>-,trail:~
 nnoremap <Leader>w :set list!<CR>
+
+" Toggle wrap
+nnoremap <Leader>r :set wrap!<CR>
 
 " Show indent guide
 nnoremap <Leader>g :IndentGuidesToggle<CR>
@@ -134,8 +155,17 @@ nnoremap <Leader>d :set background=dark<CR>
 nnoremap <Leader>l :set background=light<CR>
 
 " Copy/paste using system clipboard
-nnoremap <Leader>y "+y
-nnoremap <Leader>p "+p
+noremap <Leader>y "+y
+noremap <Leader>p "+p
+noremap <Leader>P "+P
+
+" Line transposition
+noremap <Leader>q kddpk
+noremap <Leader>a ddp
+
+
+" Delete all buffers
+nnoremap <Leader>b :%bdelete<CR>
 
 " Format JSON
 function FormatJSON()
@@ -155,12 +185,12 @@ let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 let g:SuperTabDefaultCompletionType = "context"
 
 " SHUT UP (disable beeps)
-set noeb vb t_vb=
+set t_vb=
+let g:gruvbox_contrast_light = 'hard'
+let g:gruvbox_contrast_dark = 'soft'
+colorscheme gruvbox
 
 if !has("gui_running")
-  set background=dark
-  colorscheme onedark
-
   " Disable Background Color Erase to fix tmux background clearing
   set t_ut=
 endif
