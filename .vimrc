@@ -1,29 +1,21 @@
 filetype off
-let g:localvimrc_ask=0
+let g:polyglot_disabled = ['javascript.plugin']
 
 " Explicitly use bash so other parent shells (fish) don't break
 set shell=/bin/bash
 
-execute pathogen#infect()
-
 augroup configgroup
   " Clear current autocmds
   au!
-
-  " Custom file extensions
-  au BufNewFile,BufRead *.hbs set filetype=html
-  au BufNewFile,BufRead *.hx set filetype=haxe
-  au BufNewFile,BufRead *.json set filetype=javascript
-  au BufNewFile,BufRead *.m set filetype=objc
-  au BufNewFile,BufRead *.md set filetype=markdown
-  au BufNewFile,BufRead *.phtml set filetype=php
-  au BufNewFile,BufRead *.rs set filetype=rust
 
   " Whitespace rules for Makefiles
   au FileType make set noexpandtab
 
   " PEP-8 whitespace rules for Python
   au BufNewFile,BufRead *.py setlocal tabstop=8 expandtab shiftwidth=4 softtabstop=4
+  "
+  " Whitespace rules for PHP
+  au BufNewFile,BufRead *.php setlocal filetype=php tabstop=8 expandtab shiftwidth=4 softtabstop=4
 
   " Whitespace rules for Rust
   au BufNewFile,BufRead *.rs setlocal filetype=rust tabstop=8 expandtab shiftwidth=4 softtabstop=4
@@ -31,26 +23,14 @@ augroup END
 
 set nocompatible
 syntax on
-filetype on
 
 " Disable CtrlP cache
 let g:ctrlp_cache_dir = '/dev/null'
+let g:ctrlp_use_caching = 0
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
 " Set fugitive diff to be vertical by default
 set diffopt+=vertical
-
-" Force vim-jsx to highlight even without @jsx pragma
-" https://github.com/kien/ctrlp.vim.gi://github.com/mxw/vim-jsx/issues/19
-let g:jsx_ext_required = 0
-let g:jsx_pragma_required = 0
-
-let g:ctrlp_user_command = {
-  \ 'types': {
-    \ 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
-    \ 2: ['.hg', 'hg --cwd %s locate -I .'],
-    \ },
-  \ 'fallback': 'find %s -type f'
-\ }
 
 " Long history for commands
 set history=5000
@@ -74,6 +54,7 @@ au CursorHold,CursorHoldI * checktime
 
 " Fix tmux delay
 set timeoutlen=100
+set updatetime=0
 set noswapfile
 set nobackup
 
@@ -88,7 +69,7 @@ set shiftwidth=2
 set autoindent
 set smartindent
 
-" No tabs :(
+" No tabs
 set expandtab
 
 set cursorline
@@ -104,9 +85,8 @@ nnoremap gf <C-W>gf
 noremap H ^
 noremap L $
 
-set t_Co=256
-
 highlight clear SignColumn
+highlight ColorColumn ctermbg=8
 
 " Tab completion for vim commands
 set wildmenu
@@ -159,11 +139,6 @@ noremap <Leader>y "+y
 noremap <Leader>p "+p
 noremap <Leader>P "+P
 
-" Line transposition
-noremap <Leader>q kddpk
-noremap <Leader>a ddp
-
-
 " Delete all buffers
 nnoremap <Leader>b :%bdelete<CR>
 
@@ -175,20 +150,19 @@ function FormatJSON()
 endfunction
 nnoremap <Leader>j :call FormatJSON()<CR>
 
+nnoremap <Leader>h :GitGutterLineHighlightsToggle<CR>
+
 " Use fugitive's git-grep in a quickfix window
 command -nargs=+ Grep execute 'silent Ggrep! -i' <q-args> | cw | redraw!
 map <Leader>f :Grep
 
-" Omni-complete with tab
-set hidden
-let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
-let g:SuperTabDefaultCompletionType = "context"
 
-" SHUT UP (disable beeps)
+" Disable beeps
 set t_vb=
-let g:gruvbox_contrast_light = 'hard'
-let g:gruvbox_contrast_dark = 'soft'
-colorscheme gruvbox
+
+set termguicolors
+set background=dark
+colorscheme one
 
 if !has("gui_running")
   " Disable Background Color Erase to fix tmux background clearing

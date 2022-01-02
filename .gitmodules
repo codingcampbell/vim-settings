@@ -1,51 +1,27 @@
-[submodule ".vim/bundle/vim-fugitive"]
-	path = .vim/bundle/vim-fugitive
-	url = https://github.com/tpope/vim-fugitive.git
-[submodule ".vim/bundle/vim-gitgutter"]
-	path = .vim/bundle/vim-gitgutter
-	url = https://github.com/airblade/vim-gitgutter.git
-[submodule ".vim/bundle/moonscript-vim"]
-	path = .vim/bundle/moonscript-vim
-	url = https://github.com/leafo/moonscript-vim.git
-[submodule ".vim/bundle/ctrlp"]
-	path = .vim/bundle/ctrlp
+[submodule ".vim/pack/plugins/start/ctrlp.vim"]
+	path = .vim/pack/plugins/start/ctrlp.vim
 	url = https://github.com/ctrlpvim/ctrlp.vim
-[submodule ".vim/bundle/vim-localvimrc"]
-	path = .vim/bundle/vim-localvimrc
-	url = https://github.com/embear/vim-localvimrc
-[submodule ".vim/bundle/vim-airline"]
-	path = .vim/bundle/vim-airline
-	url = https://github.com/bling/vim-airline
-[submodule ".vim/bundle/vim-jsx"]
-	path = .vim/bundle/vim-jsx
-	url = https://github.com/mxw/vim-jsx
-[submodule ".vim/bundle/vim-indent-guides"]
-	path = .vim/bundle/vim-indent-guides
-	url = https://github.com/nathanaelkane/vim-indent-guides.git
-[submodule ".vim/bundle/papercolor-theme"]
-	path = .vim/bundle/papercolor-theme
-	url = https://github.com/NLKNguyen/papercolor-theme
-[submodule ".vim/bundle/vim-colors-solarized"]
-	path = .vim/bundle/vim-colors-solarized
-	url = https://github.com/altercation/vim-colors-solarized
-[submodule ".vim/bundle/vim-lucius"]
-	path = .vim/bundle/vim-lucius
-	url = https://github.com/jonathanfilip/vim-lucius
-[submodule ".vim/bundle/vim-multiple-cursors"]
-	path = .vim/bundle/vim-multiple-cursors
-	url = https://github.com/terryma/vim-multiple-cursors
-[submodule ".vim/bundle/rust.vim"]
-	path = .vim/bundle/rust.vim
-	url = https://github.com/rust-lang/rust.vim
-[submodule ".vim/bundle/supertab"]
-	path = .vim/bundle/supertab
-	url = https://github.com/ervandew/supertab
-[submodule ".vim/bundle/vim-racer"]
-	path = .vim/bundle/vim-racer
-	url = https://github.com/racer-rust/vim-racer
-[submodule ".vim/bundle/vim-one"]
-	path = .vim/bundle/vim-one
+[submodule ".vim/pack/plugins/start/vim-airline"]
+	path = .vim/pack/plugins/start/vim-airline
+	url = https://github.com/vim-airline/vim-airline
+[submodule ".vim/pack/plugins/start/vim-fugitive"]
+	path = .vim/pack/plugins/start/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive
+[submodule ".vim/pack/plugins/start/vim-gitgutter"]
+	path = .vim/pack/plugins/start/vim-gitgutter
+	url = https://github.com/airblade/vim-gitgutter
+[submodule ".vim/pack/plugins/start/vim-indent-guides"]
+	path = .vim/pack/plugins/start/vim-indent-guides
+	url = https://github.com/nathanaelkane/vim-indent-guides
+[submodule ".vim/pack/plugins/start/vim-js"]
+	path = .vim/pack/plugins/start/vim-js
+	url = https://github.com/yuezk/vim-js
+[submodule ".vim/pack/plugins/start/vim-one"]
+	path = .vim/pack/plugins/start/vim-one
 	url = https://github.com/rakr/vim-one
-[submodule ".vim/bundle/gruvbox"]
-	path = .vim/bundle/gruvbox
-	url = https://github.com/morhetz/gruvbox
+[submodule ".vim/pack/plugins/start/vim-polyglot"]
+	path = .vim/pack/plugins/start/vim-polyglot
+	url = https://github.com/sheerun/vim-polyglot
+[submodule ".vim/pack/plugins/start/vim-visual-multi"]
+	path = .vim/pack/plugins/start/vim-visual-multi
+	url = https://github.com/mg979/vim-visual-multi
